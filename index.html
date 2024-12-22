@@ -12,6 +12,38 @@
   <link href="https://fonts.googleapis.com/css?family=Siemreap&display=swap" rel="stylesheet" />
   <!-- CSS読み込み -->
   <link rel="stylesheet" href="styles.css">
+  <style>
+    div.fixed {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 99;
+      border: none;
+      outline: none;
+      background-color: #000000;
+      cursor: pointer;
+      padding: 15px 15px;
+      border-radius: 50%;
+      font-size: 1rem;
+      scroll-behavior: smooth;
+      transition: all 1s;
+
+    }
+
+    .svgtop {
+      fill: #FFFFFF;
+    }
+
+    .hide {
+      opacity: 0;
+      right: -100%
+    }
+
+    .show {
+      opacity: 1;
+      right: 0;
+    }
+  </style>
 </head>
 
 <body>
@@ -119,7 +151,7 @@
         <section class="cta-doctor-wrap">
           <div class="cta-all-inline inner">
             <a href="https://www.yao.tokushukai.or.jp/inquiry/" class="meniu-button cta-button">CONTACT US</a>
-            <img src="images/dotLP.jpg" alt="点線" class="dot-line">
+            <img src="images/Mask group.png" alt="点線" class="dot-line">
             <div class="doctor-comment-bubble">
               <div class="doctor-inner">
                 <div class="doctor-image">
@@ -172,7 +204,7 @@
 
 
     <!-- サブナビゲーション -->
-    <section class="sub-nav-section">
+    <section id="subMenuSection" class="sub-nav-section">
       <div class="sub-nav-inner inner">
         <ul>
           <li><a href="#services" class="body-text-bold">主な業務内容</a></li>
@@ -297,7 +329,40 @@
     </footer>
 
   </div>
+  <!-- スクロールボタン -->
+  <div onclick="scrollToSubMenu()" id="backtotop" class="fixed hide">
+    <svg class="svgtop" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+      <path fill="none" d="M0 0h24v24H0V0z" />
+      <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z" />
+    </svg>
+  </div>
+
+  <script>
+    const backtotop = document.getElementById("backtotop");
+    const subMenuSection = document.getElementById("subMenuSection");
+
+    // スクロールによる表示/非表示処理
+    const ScrollFunc = function () {
+      const subMenuPosition = subMenuSection.getBoundingClientRect().top + window.scrollY;
+      const y = window.scrollY;
+      
+      // 現在のスクロール位置がサブメニューセクションの位置以上の場合のみボタンを表示
+      if (y >= subMenuPosition) {
+        backtotop.className = "fixed show";
+      } else {
+        backtotop.className = "fixed hide";
+      }
+    };
+
+    window.addEventListener("scroll", ScrollFunc);
+
+    // サブメニューまでスクロールする処理
+    function scrollToSubMenu() {
+      subMenuSection.scrollIntoView({ behavior: "smooth" });
+    }
+  </script>
 </body>
+
 <script>
   function toggleMobileMenu() {
     const nav = document.querySelector('.mobile-nav');
