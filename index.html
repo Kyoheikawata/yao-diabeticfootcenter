@@ -113,9 +113,12 @@
       </div>
 
       <!-- ハンバーガーアイコン(右端16px) -->
-      <div class="mobile-menu-icon" onclick="toggleMobileMenu()">
-        <img src="images/menubar.png" alt="メニューアイコン">
+      <div class=" menu-trigger" onclick="toggleMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
+
     </div>
 
 
@@ -129,6 +132,8 @@
         <li><a href="https://www.yao.tokushukai.or.jp/access/" class="meniu-button">交通アクセス</a></li>
         <li><a href="https://www.yao.tokushukai.or.jp/recruit/" class="meniu-button">採用情報</a></li>
       </ul>
+      <button class="close-menu" onclick="toggleMobileMenu()">CLOSE</button>
+
     </nav>
 
     <main>
@@ -345,7 +350,7 @@
     const ScrollFunc = function () {
       const subMenuPosition = subMenuSection.getBoundingClientRect().top + window.scrollY;
       const y = window.scrollY;
-      
+
       // 現在のスクロール位置がサブメニューセクションの位置以上の場合のみボタンを表示
       if (y >= subMenuPosition) {
         backtotop.className = "fixed show";
@@ -366,9 +371,34 @@
 <script>
   function toggleMobileMenu() {
     const nav = document.querySelector('.mobile-nav');
-    // 開いていなければ開く、開いていれば閉じる
-    nav.classList.toggle('open');
+    const hamburger = document.querySelector('.menu-trigger');
+
+    if (nav.classList.contains('open')) {
+      // フェードアウト
+      nav.classList.remove('fade-in');
+      nav.classList.add('fade-out');
+      // ハンバーガーの回転を戻す(= active削除)
+      hamburger.classList.remove('active');
+
+      setTimeout(() => {
+        nav.classList.remove('open');
+        nav.style.display = 'none';
+      }, 300); // フェードアウトアニメに合わせる
+    } else {
+      // メニューを表示してからフェードイン
+      nav.style.display = 'block';
+      setTimeout(() => {
+        nav.classList.remove('fade-out');
+        nav.classList.add('fade-in');
+      }, 10);
+      nav.classList.add('open');
+
+      // 回転して✖になる(= active付与)
+      hamburger.classList.add('active');
+    }
   }
+
+
 </script>
 
 </html>

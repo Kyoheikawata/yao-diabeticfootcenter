@@ -78,7 +78,10 @@ body {
   color: #36383B;
   text-decoration: none;
 }
-
+/* ホバー時の文字色 */
+.meniu-button:hover {
+  color: #1FAA85; 
+}
 /* コンテナ幅設定:1440px */
 .container {
   width: 100%;
@@ -366,7 +369,8 @@ nav ul li a {
 
 .sub-nav-inner li {
   position: relative;
-  margin-bottom: 13px; /* ボックス間のスペースを13pxに設定 */
+  margin-bottom: 13px;
+  /* ボックス間のスペースを13pxに設定 */
 }
 
 /* 最後のアイテムはマージンを除外 */
@@ -549,6 +553,7 @@ footer {
 .clinic-hours strong {
   font-weight: bold;
 }
+
 @media screen and (max-width: 1350px) and (min-width: 1160px) {
   .top-info-inner {
     height: 177px;
@@ -559,19 +564,24 @@ footer {
     /* 背面にグラデーション */
     background-size: 72px 74px, auto;
   }
-  
+
   /* 背景位置をやや上・左にずらす */
   body {
     background-position: 550px 310px, top left;
   }
+
   /* ロゴとナビゲーションの間隔を詰める */
   nav {
-    left: 200px; /* 279px → 240px */
+    left: 200px;
+    /* 279px → 240px */
   }
+
   /* メニュー項目同士の間隔を詰める */
   nav ul li+li {
-    margin-left: 20px; /* 34px → 24px */
+    margin-left: 20px;
+    /* 34px → 24px */
   }
+
   /* 文字間を少し詰める(例) */
   .meniu-button {
     letter-spacing: -0.5px;
@@ -669,8 +679,8 @@ footer {
     position: absolute;
     top: 30px;
     /* ロゴと同じ高さか少し上下に調整 */
-    /* 右端16pxのハンバーガー幅(30px)と間の24pxを考慮 → 16 + 30 + 24 = 70 */
-    right: 70px;
+    /* 右端16pxのハンバーガー幅(30px)と間の24pxを考慮 → 16 + 15 + 24 = 70 */
+    right: 55px;
     display: flex;
     align-items: center;
   }
@@ -685,29 +695,138 @@ footer {
     /* 最初のリンクには余白不要にするなら:first-child対応など */
   }
 
-  /* ハンバーガーアイコン: 右端16pxに */
-  .mobile-menu-icon {
+
+  /* ハンバーガーボタン全体 */
+  .menu-trigger {
     position: absolute;
-    top: 25px;
-    right: 16px;
     width: 30px;
     height: 30px;
     cursor: pointer;
     z-index: 9999;
-    /* 最前面に */
+    /* 位置調整(例: 元々 .mobile-menu-icon がもっていた top, right などを移植) */
+    top: 25px;
+    right: 16px;
   }
 
-  .mobile-menu-icon img {
-    width: 100%;
-    height: auto;
+  /* バー3本の共通スタイル */
+  .menu-trigger,
+  .menu-trigger span {
+    display: inline-block;
+    transition: all 0.4s;
+    box-sizing: border-box;
   }
+
+  .menu-trigger span {
+    /* バーの色や形状 */
+    background-color: #000;
+    border-radius: 4px;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 4px;
+  }
+
+  /* 1本目、2本目、3本目のバーを縦に並べる */
+  .menu-trigger span:nth-of-type(1) {
+    top: 0;
+  }
+
+  .menu-trigger span:nth-of-type(2) {
+    top: 12px;
+  }
+
+  .menu-trigger span:nth-of-type(3) {
+    bottom: 0;
+  }
+
+  /* active状態で1本目を45度ほど回転＆真ん中へ移動して斜め線化 */
+  .menu-trigger.active span:nth-of-type(1) {
+    transform: translateY(12px) rotate(-315deg);
+  }
+
+  /* 2本目を消す */
+  .menu-trigger.active span:nth-of-type(2) {
+    opacity: 0;
+  }
+
+  /* 3本目を45度ほど回転＆真ん中へ移動してもう一本の斜め線に */
+  .menu-trigger.active span:nth-of-type(3) {
+    transform: translateY(-12px) rotate(315deg);
+  }
+
+
+  /* ---------- モバイルメニュー(navigation) ---------- */
+  /* ハンバーガーボタン全体 */
+  .menu-trigger {
+    position: absolute;
+    /* 幅15×高さ10に変更 */
+    width: 15px;
+    height: 10px;
+    cursor: pointer;
+    z-index: 9999;
+    top: 35px;
+    right: 16px;
+  }
+
+  /* バー3本の共通スタイル */
+  .menu-trigger,
+  /* まとめてtransitionを設定しておくなら残してOK */
+  .menu-trigger span {
+    display: inline-block;
+    transition: all 0.4s;
+    box-sizing: border-box;
+  }
+
+  .menu-trigger span {
+    /* バー太さ1.5px */
+    height: 1.5px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    background-color: #000;
+    /* バーを丸めたい場合はradiusを1.5pxに */
+    border-radius: 1.5px;
+    /* 回転時の中心をバーの真ん中に指定 */
+    transform-origin: center;
+  }
+
+  /* 3本のバーを等間隔配置するため、小数点を使う */
+  .menu-trigger span:nth-of-type(1) {
+    top: 0;
+    /* 1本目: 上端 */
+  }
+
+  .menu-trigger span:nth-of-type(2) {
+    top: 4.25px;
+    /* 2本目: 中央付近 */
+  }
+
+  .menu-trigger span:nth-of-type(3) {
+    top: 8.5px;
+    /* 3本目: 下端 */
+  }
+
+  /* -------- active時の回転アニメーション -------- */
+  /* 上のバーを中央へ移動＆-45度回転 */
+  .menu-trigger.active span:nth-of-type(1) {
+    transform: translateY(4.25px) rotate(-315deg);
+  }
+
+  /* 中のバーはフェードアウト（消える） */
+  .menu-trigger.active span:nth-of-type(2) {
+    opacity: 0;
+  }
+
+  /* 下のバーを中央へ移動＆45度回転 */
+  .menu-trigger.active span:nth-of-type(3) {
+    transform: translateY(-4.25px) rotate(315deg);
+  }
+
 
   /* ---------- モバイルメニュー(navigation) ---------- */
   .mobile-nav {
-    /* 幅100%にして縦並び */
     width: 100%;
     display: none;
-    /* backgroundやpositionは既存の例を踏襲 */
     position: absolute;
     top: 200px;
     left: 0;
@@ -717,11 +836,23 @@ footer {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
     padding: 20px 0;
+    opacity: 0;
+    /* 初期状態は非表示 */
+    transition: opacity 0.3s ease-in-out;
+    /* フェードアニメーション */
+  }
+
+  .mobile-nav.fade-in {
+    opacity: 1;
+  }
+
+  .mobile-nav.fade-out {
+    opacity: 0;
   }
 
   .mobile-nav.open {
     display: block;
-    /* .open時に表示 */
+    transform: translateY(0);
   }
 
   .mobile-nav ul {
@@ -731,8 +862,8 @@ footer {
     display: flex;
     flex-direction: column;
     max-width: 300px;
-    /* メニュー幅固定の例 */
   }
+
 
   .mobile-nav li {
     width: 100%;
@@ -753,6 +884,29 @@ footer {
     font-weight: 700;
     padding: 15px 0;
   }
+
+  /* 閉じるボタンのスタイル */
+  .close-menu {
+    background-color: #1FAA85;
+    /* ボタン背景色 */
+    color: #FFFFFF;
+    /* ボタン文字色 */
+    border: none;
+    padding: 10px 20px;
+    margin: 10px 0;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  /* 閉じるボタンにカーソルが合された時 */
+  .close-menu:hover {
+    background-color: #1F4F61;
+    /* ホバー時の背景色 */
+  }
+
 
   /* ▼ ヒーローセクション全体を通常フローに */
   .hero-section {
@@ -929,4 +1083,3 @@ footer {
     padding: 20px 0;
   }
 }
-
