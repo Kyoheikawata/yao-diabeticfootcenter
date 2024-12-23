@@ -12,6 +12,38 @@
   <link href="https://fonts.googleapis.com/css?family=Siemreap&display=swap" rel="stylesheet" />
   <!-- CSS読み込み -->
   <link rel="stylesheet" href="styles.css">
+  <style>
+    div.fixed {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 99;
+      border: none;
+      outline: none;
+      background-color: #000000;
+      cursor: pointer;
+      padding: 15px 15px;
+      border-radius: 50%;
+      font-size: 1rem;
+      scroll-behavior: smooth;
+      transition: all 1s;
+
+    }
+
+    .svgtop {
+      fill: #FFFFFF;
+    }
+
+    .hide {
+      opacity: 0;
+      right: -100%
+    }
+
+    .show {
+      opacity: 1;
+      right: 0;
+    }
+  </style>
 </head>
 
 <body>
@@ -51,8 +83,10 @@
         <div class="hospital-info">
           <img src="images/Yaologo.png" alt="Yao Tokushukai General Hospital Logo" class="hospital-logo">
           <div class="phone-block">
-            <img src="images/phone.png" alt="電話アイコン" class="phone-icon">
-            <p class="body-text-bold phone-number">072-993-8501（代表）</p>
+            <a href="tel:0729938501" class="phone-link">
+              <img src="images/phone.png" alt="電話アイコン" class="phone-icon">
+              <span class="body-text-bold phone-number">072-993-8501（代表）</span>
+            </a>
           </div>
           <p class="body-text-bold address">〒581-0011 大阪府八尾市若草町1番17号</p>
         </div>
@@ -81,9 +115,12 @@
       </div>
 
       <!-- ハンバーガーアイコン(右端16px) -->
-      <div class="mobile-menu-icon" onclick="toggleMobileMenu()">
-        <img src="images/menubar.png" alt="メニューアイコン">
+      <div class=" menu-trigger" onclick="toggleMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
+
     </div>
 
 
@@ -97,6 +134,8 @@
         <li><a href="https://www.yao.tokushukai.or.jp/access/" class="meniu-button">交通アクセス</a></li>
         <li><a href="https://www.yao.tokushukai.or.jp/recruit/" class="meniu-button">採用情報</a></li>
       </ul>
+      <button class="close-menu" onclick="toggleMobileMenu()">CLOSE</button>
+
     </nav>
 
     <main>
@@ -119,11 +158,11 @@
         <section class="cta-doctor-wrap">
           <div class="cta-all-inline inner">
             <a href="https://www.yao.tokushukai.or.jp/inquiry/" class="meniu-button cta-button">CONTACT US</a>
-            <img src="images/dotLP.jpg" alt="点線" class="dot-line">
+            <img src="images/Mask group.png" alt="点線" class="dot-line">
             <div class="doctor-comment-bubble">
               <div class="doctor-inner">
                 <div class="doctor-image">
-                  <img src="images/doctor-s-photo@2x.png" alt="医師の写真">
+                  <img src="images/dr-85.jpg" alt="医師の写真">
                 </div>
                 <div class="doctor-comment body-text">
                   <p>私たちは、皆様の課題を理解し、サポートいたします。早期介入と個別の治療計画で、共に合併症の予防に取り組んでいきます。ご信頼いただきありがとうございます。皆様の健康が私たちの最優先事項です。</p>
@@ -158,7 +197,7 @@
           <div class="doctor-comment-bubble">
             <div class="doctor-inner">
               <div class="doctor-image">
-                <img src="images/doctor-s-photo@2x.png" alt="医師の写真">
+                <img src="images/dr-85.jpg" alt="医師の写真">
               </div>
               <div class="doctor-comment body-text">
                 <p>私たちは、皆様の課題を理解し、サポートいたします。早期介入と個別の治療計画で、共に合併症の予防に取り組んでいきます。ご信頼いただきありがとうございます。皆様の健康が私たちの最優先事項です。</p>
@@ -172,7 +211,7 @@
 
 
     <!-- サブナビゲーション -->
-    <section class="sub-nav-section">
+    <section id="subMenuSection" class="sub-nav-section">
       <div class="sub-nav-inner inner">
         <ul>
           <li><a href="#services" class="body-text-bold">主な業務内容</a></li>
@@ -297,13 +336,69 @@
     </footer>
 
   </div>
+  <!-- スクロールボタン -->
+  <div onclick="scrollToSubMenu()" id="backtotop" class="fixed hide">
+    <img src="images/BackToTop.png" alt="Back to Top">
+  </div>
+  
+
+  <script>
+    const backtotop = document.getElementById("backtotop");
+    const subMenuSection = document.getElementById("subMenuSection");
+
+    // スクロールによる表示/非表示処理
+    const ScrollFunc = function () {
+      const subMenuPosition = subMenuSection.getBoundingClientRect().top + window.scrollY;
+      const y = window.scrollY;
+
+      // 現在のスクロール位置がサブメニューセクションの位置以上の場合のみボタンを表示
+      if (y >= subMenuPosition) {
+        backtotop.className = "fixed show";
+      } else {
+        backtotop.className = "fixed hide";
+      }
+    };
+
+    window.addEventListener("scroll", ScrollFunc);
+
+    // サブメニューまでスクロールする処理
+    function scrollToSubMenu() {
+      subMenuSection.scrollIntoView({ behavior: "smooth" });
+    }
+  </script>
 </body>
+  <!-- メニューバー -->
 <script>
   function toggleMobileMenu() {
     const nav = document.querySelector('.mobile-nav');
-    // 開いていなければ開く、開いていれば閉じる
-    nav.classList.toggle('open');
+    const hamburger = document.querySelector('.menu-trigger');
+
+    if (nav.classList.contains('open')) {
+      // フェードアウト
+      nav.classList.remove('fade-in');
+      nav.classList.add('fade-out');
+      // ハンバーガーの回転を戻す(= active削除)
+      hamburger.classList.remove('active');
+
+      setTimeout(() => {
+        nav.classList.remove('open');
+        nav.style.display = 'none';
+      }, 300); // フェードアウトアニメに合わせる
+    } else {
+      // メニューを表示してからフェードイン
+      nav.style.display = 'block';
+      setTimeout(() => {
+        nav.classList.remove('fade-out');
+        nav.classList.add('fade-in');
+      }, 10);
+      nav.classList.add('open');
+
+      // 回転して✖になる(= active付与)
+      hamburger.classList.add('active');
+    }
   }
+
+
 </script>
 
 </html>

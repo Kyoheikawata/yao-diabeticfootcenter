@@ -81,15 +81,15 @@ body {
 
 /* コンテナ幅設定:1440px */
 .container {
-  width: 1440px;
+  width: 100%;
   margin: 0 auto;
 }
 
 /* ヘッダー */
 header {
-  width: 1440px;
-  height: 87px;
+  width: 100%;
   margin: 0 auto;
+  height: 87px;
   border-bottom: 1px solid #CCCCCC;
   position: relative;
 }
@@ -114,7 +114,7 @@ header {
 /* ナビゲーション配置 */
 nav {
   position: absolute;
-  left: 279px;
+  left: 260px;
   top: 50%;
   transform: translateY(-50%);
 }
@@ -136,7 +136,7 @@ nav ul li a {
 /* 検索ボックス：右端から108px */
 .search-box {
   position: absolute;
-  right: 108px;
+  right: 125px;
   top: 50%;
   transform: translateY(-50%);
 }
@@ -236,9 +236,8 @@ nav ul li a {
 /* ヒーローセクション */
 .hero-section {
   position: relative;
-  width: 1440px;
-  margin: 0 auto;
-  margin-top: 50px;
+  width: 100%;
+  margin: 50px auto 0 auto;
   padding: 40px 0;
 }
 
@@ -367,6 +366,12 @@ nav ul li a {
 
 .sub-nav-inner li {
   position: relative;
+  margin-bottom: 13px; /* ボックス間のスペースを13pxに設定 */
+}
+
+/* 最後のアイテムはマージンを除外 */
+.sub-nav-inner li:last-child {
+  margin-bottom: 0;
 }
 
 .sub-nav-inner li:not(:first-child):before {
@@ -544,9 +549,38 @@ footer {
 .clinic-hours strong {
   font-weight: bold;
 }
+@media screen and (max-width: 1350px) and (min-width: 1160px) {
+  .top-info-inner {
+    height: 177px;
+    background:
+      url("images/background-round1.png") no-repeat 643px 77px,
+      /* 最前面に画像 */
+      linear-gradient(to bottom, #FBF9F3 0px, #FFFFFF 177px);
+    /* 背面にグラデーション */
+    background-size: 72px 74px, auto;
+  }
+  
+  /* 背景位置をやや上・左にずらす */
+  body {
+    background-position: 550px 310px, top left;
+  }
+  /* ロゴとナビゲーションの間隔を詰める */
+  nav {
+    left: 200px; /* 279px → 240px */
+  }
+  /* メニュー項目同士の間隔を詰める */
+  nav ul li+li {
+    margin-left: 20px; /* 34px → 24px */
+  }
+  /* 文字間を少し詰める(例) */
+  .meniu-button {
+    letter-spacing: -0.5px;
+  }
+}
 
-/* レスポンシブ */
-@media screen and (max-width: 1050px) {
+
+/* レスポンシブ モバイル */
+@media screen and (max-width: 1160px) {
 
   /* 全体幅を100%に */
   .container {
