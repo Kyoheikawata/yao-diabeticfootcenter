@@ -930,3 +930,1167 @@ footer {
   }
 }
 
+=======
+/* リセットCSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ▼ モバイル版ヘッダーはPC時は非表示にする ---------- */
+.mobile-header,
+.mobile-nav,
+.main-mobile {
+  display: none;
+}
+
+/* ベースフォント設定 */
+body {
+  font-family: 'Yantramanav', sans-serif;
+  background:
+    url("images/background-round2.png") no-repeat;
+
+  /* ポジションとサイズは順番通りに指定: 最初のが画像、2番目がグラデーション */
+  background-position: 600px 310px, top left;
+  background-size: 46px 47px, auto;
+
+  color: #292F2C;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* 汎用クラス */
+.inner {
+  width: 100%;
+  position: relative;
+  margin: 0 auto;
+}
+
+/* ヘッドライン用 */
+.h1 {
+  font-size: 44px;
+  font-weight: 700;
+  color: #292F2C;
+}
+
+.h2 {
+  font-size: 33px;
+  font-weight: 700;
+  color: #292F2C;
+  margin-bottom: 52px;
+}
+
+.h3 {
+  font-size: 25px;
+  font-weight: 500;
+  color: #3F4144;
+}
+
+/* テキスト */
+.body-text {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #292F2C;
+}
+
+.body-text-bold {
+  font-size: 16px;
+  font-weight: 700;
+  color: #292F2C;
+}
+
+/* メニュー用 */
+.meniu-button {
+  font-family: 'Sarala', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #36383B;
+  text-decoration: none;
+}
+
+/* ホバー時の文字色 */
+.meniu-button:hover {
+  color: #1FAA85;
+}
+
+/* コンテナ幅設定:1440px */
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ヘッダー */
+header {
+  width: 100%;
+  margin: 0 auto;
+  height: 87px;
+  border-bottom: 1px solid #CCCCCC;
+  position: relative;
+}
+
+.header-inner {
+  height: 100%;
+}
+
+/* ロゴ配置：左端から108px、サイズ71×71 */
+.logo {
+  position: absolute;
+  left: 123px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.logo img {
+  width: 41px;
+  height: 57px;
+}
+
+/* ナビゲーション配置 */
+nav {
+  position: absolute;
+  left: 260px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li+li {
+  margin-left: 34px;
+}
+
+nav ul li a {
+  color: #36383B;
+  text-decoration: none;
+}
+
+/* 検索ボックス：右端から108px */
+.search-box {
+  position: absolute;
+  right: 125px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.search-box input {
+  width: 200px;
+  padding: 5px 10px;
+  border: 1px solid #AAAAAA;
+  border-radius: 3px;
+  font-size: 14px;
+  color: #333;
+}
+
+
+
+/* トップインフォ */
+.top-info {
+  border-bottom: 1px solid #DCDBD6;
+  padding: 0;
+  position: relative;
+  height: 0;
+}
+
+.top-info-inner {
+  height: 177px;
+  background:
+    url("images/background-round1.png") no-repeat 743px 77px,
+    /* 最前面に画像 */
+    linear-gradient(to bottom, #FBF9F3 0px, #FFFFFF 177px);
+  /* 背面にグラデーション */
+  background-size: 72px 74px, auto;
+}
+
+
+/* 病院情報 */
+.hospital-info {
+  position: absolute;
+  top: 8px;
+  left: 125px;
+}
+
+.hospital-logo {
+  display: block;
+  margin-bottom: 8px;
+  width: 175px;
+  height: 30px;
+}
+
+.phone-block {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 8px;
+  position: relative;
+  /* 疑似要素に対して基準位置を設定 */
+}
+
+.phone-link {
+  position: relative;
+  /* 疑似要素を利用するために必要 */
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  z-index: 1;
+  /* 疑似要素よりも上に設定 */
+}
+
+.phone-link::before {
+  content: "";
+  /* 疑似要素でクリック範囲を拡張 */
+  position: absolute;
+  top: -8px;
+  /* 上下にクリック可能な範囲を広げる */
+  bottom: -8px;
+  left: -12px;
+  /* 左右にクリック可能な範囲を広げる */
+  right: -12px;
+  background: transparent;
+  /* 背景は透明 */
+  z-index: 0;
+  /* 疑似要素をリンクの背後に配置 */
+}
+
+.phone-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+
+.phone-link:hover .phone-number,
+.phone-link:hover .phone-icon {
+  color: #1FAA85;
+  /* ホバー時の文字色 */
+  filter: brightness(0.8);
+  /* アイコンを暗くする */
+}
+
+.phone-number {
+  color: #1FAA85;
+}
+
+
+.address {
+  margin-bottom: 8px;
+}
+
+/* ヘッダーリンク */
+.header-links {
+  position: absolute;
+  top: 8px;
+  right: 125px;
+}
+
+.header-links a {
+  margin-left: 10px;
+  font-size: 14px;
+  color: #36383B;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.link-icon {
+  width: 14px;
+  height: 18px;
+  margin-right: 5px;
+}
+
+.header-links img {
+  vertical-align: middle;
+}
+
+/* ヒーローセクション */
+.hero-section {
+  position: relative;
+  width: 100%;
+  margin: 50px auto 0 auto;
+  padding: 40px 0;
+}
+
+
+.hero-text {
+  position: absolute;
+  top: 0;
+  left: 125px;
+  margin-top: 28px;
+}
+
+.hero-text h1 {
+  margin-bottom: 16px;
+}
+
+/* 説明文幅調整はinline styleで指定中 */
+
+/* ヒーロー画像：右から154px */
+.hero-image {
+  position: absolute;
+  right: 154px;
+  top: -40px;
+}
+
+.hero-image img {
+  width: 454px;
+  height: 454px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* CTA & ドクターコメント */
+.cta-doctor-wrap {
+  padding: 40px 0 20px 0;
+  margin-top: 180px;
+}
+
+.cta-all-inline {
+  width: 1190px;
+  margin: 0 125px;
+  font-size: 0;
+}
+
+.cta-all-inline>* {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 14px;
+}
+
+.cta-button {
+  width: 167px;
+  height: 48px;
+  background-color: #1FAA85;
+  color: #FFFFFF;
+  border-radius: 6px;
+  line-height: 48px;
+  text-align: center;
+}
+
+.dot-line {
+  width: 340px;
+  height: 63px;
+  margin-top: -23px;
+}
+
+/* ドクターコメントボックス */
+.doctor-comment-bubble {
+  vertical-align: top;
+  background: #FFFFFF;
+  border-radius: 15px;
+  padding: 20px;
+  width: 354px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  position: relative;
+  /* 絶対配置基準 */
+  top: -50px;
+  /* 点線との位置関係 */
+}
+
+.doctor-inner {
+  /* flexを解除し通常の流れにする */
+  position: relative;
+}
+
+/* 画像を左上(左20px,上28px)に絶対配置 */
+.doctor-image img {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.doctor-comment {
+  margin-left: 70px;
+  font-size: 14px;
+
+}
+
+.doctor-comment p {
+  margin: 0 0 10px 0;
+}
+
+.doctor-name {
+  color: #1FAA85;
+  font-weight: bold;
+  margin: 0;
+}
+
+
+/* サブナビゲーション */
+.sub-nav-section {
+  border-bottom: 1px solid #CCCCCC;
+  /* 最終的にはここ消す（ボーダーの色） */
+  padding: 20px 0;
+}
+
+.sub-nav-inner {
+  margin-left: 125px;
+}
+
+.sub-nav-inner ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.sub-nav-inner li {
+  position: relative;
+  margin-bottom: 13px;
+  /* ボックス間のスペースを13pxに設定 */
+}
+
+/* 最後のアイテムはマージンを除外 */
+.sub-nav-inner li:last-child {
+  margin-bottom: 0;
+}
+
+.sub-nav-inner li:not(:first-child):before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  background: url("images/Arrow.png") no-repeat center center;
+  width: 20px;
+  height: 20px;
+  margin: 0 6px;
+}
+
+.sub-nav-inner li a {
+  text-decoration: none;
+  font-size: 14px;
+  color: #292F2C;
+  /* 通常時の文字色 */
+  display: inline-block;
+  padding: 10px 24px;
+  border: 1px solid #C8C6BE;
+  border-radius: 6px;
+  background: #FFFefa;
+  transition: background 0.3s, color 0.3s;
+}
+
+.sub-nav-inner li a:hover,
+.sub-nav-inner li a:focus,
+.sub-nav-inner li a:active {
+  color: #1FAA85;
+  /* ホバーやタップ、フォーカス時は#12C998 */
+}
+
+
+
+/* 各セクション共通 */
+.services,
+.nanchisei-section,
+.center-features,
+.cases-section,
+.study-section,
+.results-section,
+.reservation-info {
+  padding: 60px 0;
+}
+
+/* 各innerクラス左余白 */
+.services-inner,
+.nanchisei-inner,
+.features-inner,
+.cases-inner,
+.study-inner,
+.results-inner,
+.reservation-inner {
+  margin-left: 125px;
+}
+
+/* サービスカード */
+.service-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 62px;
+}
+
+.service-card {
+  width: 360px;
+  background: #FFFefa;
+  border: 1px solid #C8C6BE;
+  border-radius: 25px;
+  padding: 40px;
+  text-align: left;
+}
+
+.service-card img {
+  width: 100%;
+  object-fit: cover;
+  margin-bottom: 22px;
+}
+
+.service-card h3 {
+  font-size: 25px;
+  color: #3F4144;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.service-card p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #292F2C;
+}
+
+/* 診療情報ボックス */
+.info-box {
+  display: inline-flex;
+  /* インライン要素として並び、内容に応じて幅が決まる */
+  border-radius: 10px;
+  border: 1px solid #CCCCCC;
+  overflow: hidden;
+  font-family: 'Yantramanav', sans-serif;
+}
+
+.info-row {
+  display: inline-flex;
+  /* width:100%; ←削除 */
+}
+
+.info-block {
+  padding: 15px 25px;
+  /* 上下15px, 左右25pxの余白 */
+  font-size: 19px;
+  color: #333333;
+  /* white-space: nowrap; ← 削除でテキスト量に応じて高さ調整可能 */
+}
+
+/* 隣接するブロック間に縦罫線を追加 */
+.info-block+.info-block {
+  border-left: 1px solid #CCCCCC;
+}
+
+.time-highlight {
+  color: #1FAA85;
+  /* 強調色 */
+  font-weight: bold;
+}
+
+.bg-cream {
+  background-color: #FFFEFB;
+}
+
+.bg-white {
+  background-color: #FFFFFF;
+}
+
+
+/* その他セクションの本文 */
+.nanchisei-section p,
+.center-features p,
+.cases-section p,
+.study-section p,
+.results-section p,
+.reservation-info p {
+  font-size: 14px;
+  color: #292F2C;
+  line-height: 1.8;
+}
+
+/* フッター */
+footer {
+  border-top: 1px solid #CCCCCC;
+  padding: 40px 0;
+}
+
+
+
+.clinic-hours h2 {
+  font-size: 33px;
+  color: #292F2C;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.clinic-hours ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.clinic-hours li {
+  font-size: 14px;
+  color: #292F2C;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.clinic-hours strong {
+  font-weight: bold;
+}
+
+@media screen and (max-width: 1350px) and (min-width: 1160px) {
+  .top-info-inner {
+    height: 177px;
+    background:
+      url("images/background-round1.png") no-repeat 643px 77px,
+      /* 最前面に画像 */
+      linear-gradient(to bottom, #FBF9F3 0px, #FFFFFF 177px);
+    /* 背面にグラデーション */
+    background-size: 72px 74px, auto;
+  }
+
+  /* 背景位置をやや上・左にずらす */
+  body {
+    background-position: 550px 310px, top left;
+  }
+
+  /* ロゴとナビゲーションの間隔を詰める */
+  nav {
+    left: 200px;
+    /* 279px → 240px */
+  }
+
+  /* メニュー項目同士の間隔を詰める */
+  nav ul li+li {
+    margin-left: 20px;
+    /* 34px → 24px */
+  }
+
+  /* 文字間を少し詰める(例) */
+  .meniu-button {
+    letter-spacing: -0.5px;
+  }
+}
+
+
+/* レスポンシブ モバイル */
+@media screen and (max-width: 1160px) {
+
+  /* 全体幅を100%に */
+  .container {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  body {
+    background: none;
+  }
+
+  /* ヘッダー */
+  header,
+  .top-info,
+  .main-pc {
+    display: none;
+  }
+
+  .main-mobile {
+    display: block;
+    background:
+      url("images/background-round2.png") no-repeat left 90px top 350px,
+      /* 左上に1つ目 */
+      url("images/background-round2.png") no-repeat right 90px bottom 0px;
+    /* 右下に2つ目 */
+    background-size: 75px 75px, 50px 50px;
+    /* 両方の背景サイズを指定 */
+
+  }
+
+  /* ---------- モバイル専用ヘッダー ---------- */
+  .mobile-header {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 140px;
+    /* 背景: linear-gradient  + 高さ分 #FBF9F3 → #FFFFFF */
+    background:
+      url("images/background-round2.png") no-repeat left 274px top 80px,
+      /* 左上に配置 */
+      linear-gradient(to bottom, #FBF9F3 0px, #FFFFFF 140px);
+    /* デフォルトのグラデーション */
+    background-size: 50px 50px, auto;
+    /* 背景画像のサイズを設定 */
+  }
+
+  .header-inner {
+    position: static;
+    /* 絶対配置解除 */
+    height: auto;
+    padding: 10px 0;
+    text-align: center;
+    /* 中央寄せ */
+  }
+
+  .mobile-logo {
+    position: absolute;
+    left: 29px;
+    top: 20px;
+    /* お好みで微調整 */
+    width: 41px;
+    height: 57px;
+  }
+
+  /* Yaologo.png はロゴの下に */
+  .yao-logo {
+    position: absolute;
+    left: 29px;
+    top: 85px;
+    /* ロゴの高さ+少し余白 */
+    width: 150px;
+    /* 適当なサイズ例 */
+    height: auto;
+  }
+
+  nav {
+    position: static;
+    /* 絶対配置解除 */
+    transform: none;
+    margin: 10px 0;
+  }
+
+  /* 言語リンク (日本語 / EN) : ハンバーガー左24px、かつ右端16pxのハンバーガーを考慮 */
+  .mobile-lang {
+    position: absolute;
+    top: 30px;
+    /* ロゴと同じ高さか少し上下に調整 */
+    /* 右端16pxのハンバーガー幅(30px)と間の24pxを考慮 → 16 + 15 + 24 = 70 */
+    right: 55px;
+    display: flex;
+    align-items: center;
+  }
+
+  .mobile-lang a {
+    text-decoration: none;
+    color: #36383B;
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 24px;
+    /* 日本語とENの間を24px */
+    /* 最初のリンクには余白不要にするなら:first-child対応など */
+  }
+
+
+  /* ハンバーガーボタン全体 */
+  .menu-trigger {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 9999;
+    /* 位置調整(例: 元々 .mobile-menu-icon がもっていた top, right などを移植) */
+    top: 25px;
+    right: 16px;
+  }
+
+  /* バー3本の共通スタイル */
+  .menu-trigger,
+  .menu-trigger span {
+    display: inline-block;
+    transition: all 0.4s;
+    box-sizing: border-box;
+  }
+
+  .menu-trigger span {
+    /* バーの色や形状 */
+    background-color: #000;
+    border-radius: 4px;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 4px;
+  }
+
+  /* 1本目、2本目、3本目のバーを縦に並べる */
+  .menu-trigger span:nth-of-type(1) {
+    top: 0;
+  }
+
+  .menu-trigger span:nth-of-type(2) {
+    top: 12px;
+  }
+
+  .menu-trigger span:nth-of-type(3) {
+    bottom: 0;
+  }
+
+  /* active状態で1本目を45度ほど回転＆真ん中へ移動して斜め線化 */
+  .menu-trigger.active span:nth-of-type(1) {
+    transform: translateY(12px) rotate(-315deg);
+  }
+
+  /* 2本目を消す */
+  .menu-trigger.active span:nth-of-type(2) {
+    opacity: 0;
+  }
+
+  /* 3本目を45度ほど回転＆真ん中へ移動してもう一本の斜め線に */
+  .menu-trigger.active span:nth-of-type(3) {
+    transform: translateY(-12px) rotate(315deg);
+  }
+
+
+  /* ---------- モバイルメニュー(navigation) ---------- */
+  /* ハンバーガーボタン全体 */
+  .menu-trigger {
+    position: absolute;
+    /* 幅15×高さ10に変更 */
+    width: 15px;
+    height: 10px;
+    cursor: pointer;
+    z-index: 9999;
+    top: 35px;
+    right: 16px;
+  }
+
+  /* バー3本の共通スタイル */
+  .menu-trigger,
+  /* まとめてtransitionを設定しておくなら残してOK */
+  .menu-trigger span {
+    display: inline-block;
+    transition: all 0.4s;
+    box-sizing: border-box;
+  }
+
+  .menu-trigger span {
+    /* バー太さ1.5px */
+    height: 1.5px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    background-color: #000;
+    /* バーを丸めたい場合はradiusを1.5pxに */
+    border-radius: 1.5px;
+    /* 回転時の中心をバーの真ん中に指定 */
+    transform-origin: center;
+  }
+
+  /* 3本のバーを等間隔配置するため、小数点を使う */
+  .menu-trigger span:nth-of-type(1) {
+    top: 0;
+    /* 1本目: 上端 */
+  }
+
+  .menu-trigger span:nth-of-type(2) {
+    top: 4.25px;
+    /* 2本目: 中央付近 */
+  }
+
+  .menu-trigger span:nth-of-type(3) {
+    top: 8.5px;
+    /* 3本目: 下端 */
+  }
+
+  /* -------- active時の回転アニメーション -------- */
+  /* 上のバーを中央へ移動＆-45度回転 */
+  .menu-trigger.active span:nth-of-type(1) {
+    transform: translateY(4.25px) rotate(-315deg);
+  }
+
+  /* 中のバーはフェードアウト（消える） */
+  .menu-trigger.active span:nth-of-type(2) {
+    opacity: 0;
+  }
+
+  /* 下のバーを中央へ移動＆45度回転 */
+  .menu-trigger.active span:nth-of-type(3) {
+    transform: translateY(-4.25px) rotate(315deg);
+  }
+
+
+  /* ---------- モバイルメニュー(navigation) ---------- */
+  .mobile-nav {
+    width: 100%;
+    display: none;
+    position: absolute;
+    top: 200px;
+    left: 0;
+    background: rgba(255, 255, 255, 0.95);
+    z-index: 9998;
+    border-top: 1px solid #CCC;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding: 20px 0;
+    opacity: 0;
+    /* 初期状態は非表示 */
+    transition: opacity 0.3s ease-in-out;
+    /* フェードアニメーション */
+  }
+
+  .mobile-nav.fade-in {
+    opacity: 1;
+  }
+
+  .mobile-nav.fade-out {
+    opacity: 0;
+  }
+
+  .mobile-nav.open {
+    display: block;
+    transform: translateY(0);
+  }
+
+  .mobile-nav ul {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+  }
+
+
+  .mobile-nav li {
+    width: 100%;
+    border-top: 1px solid #CCC;
+    margin: 0;
+  }
+
+  .mobile-nav li:first-child {
+    border-top: none;
+    /* 最初だけ線なし */
+  }
+
+  .mobile-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #36383B;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 15px 0;
+  }
+
+  /* 閉じるボタンのスタイル */
+  .close-menu {
+    background-color: #1FAA85;
+    /* ボタン背景色 */
+    color: #FFFFFF;
+    /* ボタン文字色 */
+    border: none;
+    padding: 10px 20px;
+    margin: 10px 0;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  /* 閉じるボタンにカーソルが合された時 */
+  .close-menu:hover {
+    background-color: #1F4F61;
+    /* ホバー時の背景色 */
+  }
+
+
+  /* ▼ ヒーローセクション全体を通常フローに */
+  .hero-section {
+    position: static !important;
+    /* 絶対配置を打ち消し */
+    margin-top: 0px;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0 10px;
+    /* 左右10px余白  */
+    box-sizing: border-box;
+  }
+
+  /* ▼ hero-textを通常フローで並べ、文章左揃え */
+  .hero-text {
+    position: static !important;
+    margin: 0 20px;
+    /* 左右20px余白 */
+    text-align: left;
+    /* 幅を固定しない → 可変 */
+    max-width: none;
+  }
+
+  /* 文章末端から30px下にボタンを置く => margin-bottom:30pxしてボタンが自然に下がる */
+  .hero-desc {
+    width: auto !important;
+    display: block;
+    margin-bottom: 30px;
+    /* 文章末端から30px空ける */
+  }
+
+  /* CTA & ドクターコメント */
+  .cta-doctor-wrap {
+    margin: 0px auto 0;
+    /* Drコメントから35px空けてサブナビゲーション */
+    padding: 0 0 35px 0;
+    max-width: 100%;
+    /* 画面幅に合わせる */
+    text-align: left;
+    /* 左揃え */
+    position: static;
+    /* PCの絶対配置があれば打ち消す */
+  }
+
+  .cta-all-inline {
+    width: auto;
+    margin: 0 20px;
+    /* 左右20px余白(文章に合わせる) */
+    text-align: left;
+    font-size: 0;
+  }
+
+  .cta-all-inline>* {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+
+  /* CONTACT US ボタンの左端を文章と同じに */
+  .cta-button {
+    margin-left: 0;
+  }
+
+  /* ▼ dot-line を非表示 */
+  .dot-line {
+    display: none !important;
+  }
+
+  .hero-image {
+    position: static !important;
+    margin: 0px 20px 0px;
+    /* 文章から30px下, 右端揃え(=auto), 左に20px余白 */
+    text-align: right;
+    /* 画像を右端に揃える */
+  }
+
+  .hero-image img {
+    width: 55vw;
+    /* 画面幅の55%を基準にサイズを調整 */
+    height: 55vw;
+    /* 高さも同じにして円形を維持 */
+    max-width: 300px;
+    /* 画像の最大幅を300pxに制限 */
+    max-height: 300px;
+    /* 画像の最大高さを300pxに制限 */
+    border-radius: 50%;
+    /* 円形にする */
+    object-fit: cover;
+    /* アスペクト比を崩さず領域内に収める */
+    margin-bottom: 0px;
+  }
+
+  .doctor-comment-bubble {
+    position: static;
+    top: auto;
+    margin: 20px auto 0 auto;
+  }
+
+  /* サブナビゲーション（既に縦並びが定義されているが、位置調整） */
+  .sub-nav-inner {
+    margin-left: 20px;
+    text-align: center;
+  }
+
+  .sub-nav-section {
+    padding: 20px 0;
+  }
+
+  /* 各セクション共通 */
+  .services,
+  .nanchisei-section,
+  .center-features,
+  .cases-section,
+  .study-section,
+  .results-section,
+  .reservation-info {
+    padding: 30px 0;
+    /* トップ・ボトム余白縮小 */
+  }
+
+  .services-inner,
+  .reservation-inner,
+  .nanchisei-inner,
+  .features-inner,
+  .cases-inner,
+  .study-inner,
+  .results-inner {
+    margin-left: 10px;
+    /* 左端から10px */
+    margin-right: 10px;
+    /* デザインのバランスを保つ */
+  }
+
+  /* サービスカード */
+  .service-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .service-card {
+    width: 90%;
+    /* 画面幅に合わせて広げる */
+    margin-bottom: 20px;
+  }
+
+  /* 診療情報ボックス */
+  .info-box {
+    display: block;
+    /* インラインブロックを解除して縦並び */
+    text-align: center;
+  }
+
+  .info-row {
+    display: block;
+  }
+
+  .info-block {
+    display: block;
+    border-left: none;
+    /* 横並び時の仕切り線を解除 */
+    border-top: 1px solid #CCCCCC;
+    margin: 0;
+  }
+
+  .info-block+.info-block {
+    /* 縦並びの仕切り線 */
+    border-left: none;
+    border-top: 1px solid #CCCCCC;
+  }
+
+  /* フッター調整 */
+  footer {
+    padding: 20px 0;
+  }
+}
+
+#backtotop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  width: 50px;
+  /* 画像サイズに合わせる */
+  height: 50px;
+  cursor: pointer;
+  background: none;
+  /* 黒丸を削除 */
+  border: none;
+  /* ボーダーも削除 */
+  padding: 0;
+  /* 不要な余白削除 */
+  transition: opacity 0.3s ease-in-out;
+  /* フェードイン・アウト */
+}
+
+#backtotop img {
+  width: 100%;
+  /* 親要素全体に画像を合わせる */
+  height: 100%;
+  object-fit: cover;
+  /* アスペクト比を維持しつつ、親要素にフィット */
+  border-radius: 0;
+  /* 丸みを削除 */
+}
+
+#backtotop.hide {
+  opacity: 0;
+  pointer-events: none;
+  /* 非表示時にクリック無効 */
+}
+
+#backtotop.show {
+  opacity: 1;
+}
