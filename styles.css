@@ -78,10 +78,12 @@ body {
   color: #36383B;
   text-decoration: none;
 }
+
 /* ホバー時の文字色 */
 .meniu-button:hover {
-  color: #1FAA85; 
+  color: #1FAA85;
 }
+
 /* コンテナ幅設定:1440px */
 .container {
   width: 100%;
@@ -192,18 +194,55 @@ nav ul li a {
   display: inline-flex;
   align-items: center;
   margin-bottom: 8px;
+  position: relative;
+  /* 疑似要素に対して基準位置を設定 */
+}
+
+.phone-link {
+  position: relative;
+  /* 疑似要素を利用するために必要 */
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  z-index: 1;
+  /* 疑似要素よりも上に設定 */
+}
+
+.phone-link::before {
+  content: "";
+  /* 疑似要素でクリック範囲を拡張 */
+  position: absolute;
+  top: -8px;
+  /* 上下にクリック可能な範囲を広げる */
+  bottom: -8px;
+  left: -12px;
+  /* 左右にクリック可能な範囲を広げる */
+  right: -12px;
+  background: transparent;
+  /* 背景は透明 */
+  z-index: 0;
+  /* 疑似要素をリンクの背後に配置 */
 }
 
 .phone-icon {
-  width: 21px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   margin-right: 8px;
-  vertical-align: middle;
+}
+
+.phone-link:hover .phone-number,
+.phone-link:hover .phone-icon {
+  color: #1FAA85;
+  /* ホバー時の文字色 */
+  filter: brightness(0.8);
+  /* アイコンを暗くする */
 }
 
 .phone-number {
   color: #1FAA85;
 }
+
 
 .address {
   margin-bottom: 8px;
@@ -1082,4 +1121,43 @@ footer {
   footer {
     padding: 20px 0;
   }
+}
+
+#backtotop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  width: 50px;
+  /* 画像サイズに合わせる */
+  height: 50px;
+  cursor: pointer;
+  background: none;
+  /* 黒丸を削除 */
+  border: none;
+  /* ボーダーも削除 */
+  padding: 0;
+  /* 不要な余白削除 */
+  transition: opacity 0.3s ease-in-out;
+  /* フェードイン・アウト */
+}
+
+#backtotop img {
+  width: 100%;
+  /* 親要素全体に画像を合わせる */
+  height: 100%;
+  object-fit: cover;
+  /* アスペクト比を維持しつつ、親要素にフィット */
+  border-radius: 0;
+  /* 丸みを削除 */
+}
+
+#backtotop.hide {
+  opacity: 0;
+  pointer-events: none;
+  /* 非表示時にクリック無効 */
+}
+
+#backtotop.show {
+  opacity: 1;
 }

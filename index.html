@@ -83,8 +83,10 @@
         <div class="hospital-info">
           <img src="images/Yaologo.png" alt="Yao Tokushukai General Hospital Logo" class="hospital-logo">
           <div class="phone-block">
-            <img src="images/phone.png" alt="電話アイコン" class="phone-icon">
-            <p class="body-text-bold phone-number">072-993-8501（代表）</p>
+            <a href="tel:0729938501" class="phone-link">
+              <img src="images/phone.png" alt="電話アイコン" class="phone-icon">
+              <span class="body-text-bold phone-number">072-993-8501（代表）</span>
+            </a>
           </div>
           <p class="body-text-bold address">〒581-0011 大阪府八尾市若草町1番17号</p>
         </div>
@@ -160,7 +162,7 @@
             <div class="doctor-comment-bubble">
               <div class="doctor-inner">
                 <div class="doctor-image">
-                  <img src="images/doctor-s-photo@2x.png" alt="医師の写真">
+                  <img src="images/dr-85.jpg" alt="医師の写真">
                 </div>
                 <div class="doctor-comment body-text">
                   <p>私たちは、皆様の課題を理解し、サポートいたします。早期介入と個別の治療計画で、共に合併症の予防に取り組んでいきます。ご信頼いただきありがとうございます。皆様の健康が私たちの最優先事項です。</p>
@@ -195,7 +197,7 @@
           <div class="doctor-comment-bubble">
             <div class="doctor-inner">
               <div class="doctor-image">
-                <img src="images/doctor-s-photo@2x.png" alt="医師の写真">
+                <img src="images/dr-85.jpg" alt="医師の写真">
               </div>
               <div class="doctor-comment body-text">
                 <p>私たちは、皆様の課題を理解し、サポートいたします。早期介入と個別の治療計画で、共に合併症の予防に取り組んでいきます。ご信頼いただきありがとうございます。皆様の健康が私たちの最優先事項です。</p>
@@ -336,11 +338,9 @@
   </div>
   <!-- スクロールボタン -->
   <div onclick="scrollToSubMenu()" id="backtotop" class="fixed hide">
-    <svg class="svgtop" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-      <path fill="none" d="M0 0h24v24H0V0z" />
-      <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z" />
-    </svg>
+    <img src="images/BackToTop.png" alt="Back to Top">
   </div>
+  
 
   <script>
     const backtotop = document.getElementById("backtotop");
@@ -367,7 +367,7 @@
     }
   </script>
 </body>
-
+  <!-- メニューバー -->
 <script>
   function toggleMobileMenu() {
     const nav = document.querySelector('.mobile-nav');
