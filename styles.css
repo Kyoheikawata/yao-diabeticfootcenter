@@ -1128,9 +1128,9 @@ footer {
   bottom: 20px;
   right: 20px;
   z-index: 99;
-  width: 30px;
+  width: 35px;
   /* 画像サイズに合わせる */
-  height: 30px;
+  height: 35px;
   cursor: pointer;
   background: none;
   /* 黒丸を削除 */
