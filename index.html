@@ -12,38 +12,29 @@
   <link href="https://fonts.googleapis.com/css?family=Siemreap&display=swap" rel="stylesheet" />
   <!-- CSS読み込み -->
   <link rel="stylesheet" href="styles.css">
-  <style>
-    div.fixed {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 99;
-      border: none;
-      outline: none;
-      background-color: #000000;
-      cursor: pointer;
-      padding: 15px 15px;
-      border-radius: 50%;
-      font-size: 1rem;
-      scroll-behavior: smooth;
-      transition: all 1s;
+  <!-- イメージスライダー -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bxslider@4/dist/jquery.bxslider.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bxslider@4/dist/jquery.bxslider.min.js"></script>
 
-    }
+  <script>
+$(document).ready(function () {
+  $('.bxslider').bxSlider({
+    mode: 'horizontal',     // スライドの切り替え方 (horizontal / fade / verticalなど)
+    auto: true,             // 自動再生する場合
+    speed: 800,             // スライド切り替えスピード
+    pause: 4000,            // スライドの表示時間
+    captions: false,        // 画像キャプションを表示する場合はtrue
+    pager: false,           // ページャーを非表示
+    adaptiveHeight: true,    // スライダーの高さを内容に合わせて調整
+    prevText: '',  // 「Prev」表記を消す
+    nextText: ''   // 「Next」表記を消す
+    
+  });
+});
+  </script>
 
-    .svgtop {
-      fill: #FFFFFF;
-    }
 
-    .hide {
-      opacity: 0;
-      right: -100%
-    }
-
-    .show {
-      opacity: 1;
-      right: 0;
-    }
-  </style>
 </head>
 
 <body>
@@ -146,14 +137,23 @@
             <div class="hero-text">
               <h1 class="h1">Diabetic Foot Center</h1>
               <p class="body-text hero-desc" style="width:414px;">
-                糖尿病による足の問題を抱えていませんか？私たちの専門センターでは、糖尿病患者様に特化したフットケアと治療を提供しています。早期発見と適切なケアで、足の健康を守り、生活の質を向上させましょう。安心して足を任せられる専門チームが、あなたをサポートします。
+                糖尿病による足の問題を抱えていませんか？ ...
               </p>
             </div>
+
+            <!-- 円形イメージ -->
+
             <div class="hero-image">
-              <img src="images/beachleg.jpg" alt="足の治療イメージ">
+              <ul class="bxslider">
+                <li><img src="images/beachleg.jpg" alt="スライド画像1"></li>
+                <li><img src="images/dr-85.jpg" alt="スライド画像2"></li>
+                <li><img src="images/wound1.jpg" alt="スライド画像3"></li>
+              </ul>
             </div>
+
           </div>
         </section>
+
 
         <section class="cta-doctor-wrap">
           <div class="cta-all-inline inner">
@@ -189,7 +189,11 @@
               <a href="https://www.yao.tokushukai.or.jp/inquiry/" class="meniu-button cta-button">CONTACT US</a>
             </div>
             <div class="hero-image">
-              <img src="images/beachleg.jpg" alt="足の治療イメージ">
+              <ul class="bxslider">
+                <li><img src="images/beachleg.jpg" alt="スライド画像1"></li>
+                <li><img src="images/dr-85.jpg" alt="スライド画像2"></li>
+                <li><img src="images/wound1.jpg" alt="スライド画像3"></li>
+              </ul>
             </div>
           </div>
         </section>
@@ -340,7 +344,7 @@
   <div onclick="scrollToSubMenu()" id="backtotop" class="fixed hide">
     <img src="images/BackToTop.png" alt="Back to Top">
   </div>
-  
+
 
   <script>
     const backtotop = document.getElementById("backtotop");
@@ -367,7 +371,7 @@
     }
   </script>
 </body>
-  <!-- メニューバー -->
+<!-- メニューバー -->
 <script>
   function toggleMobileMenu() {
     const nav = document.querySelector('.mobile-nav');
