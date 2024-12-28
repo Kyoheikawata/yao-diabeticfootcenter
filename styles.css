@@ -302,14 +302,38 @@ nav ul li a {
   position: absolute;
   right: 154px;
   top: -40px;
+
+  width: 454px;
+  height: 454px;
+  overflow: hidden; /* 枠からはみ出さない */
+  border-radius: 50%;
 }
 
 .hero-image img {
-  width: 454px;
-  height: 454px;
-  border-radius: 50%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
+
+/* hero-image内のスライダー要素を「454px」に固定(1枚分) */
+.hero-image .bx-wrapper,
+.hero-image .bx-viewport {
+  width: 454px ;
+  height: 454px ;
+  border-radius: 50%;
+  border: none;
+  overflow: hidden;
+}
+
+.hero-image .bxslider li {
+  width: 454px ; /* 各スライド(LI)も454px幅 */
+  height: 454px ; 
+  overflow: hidden;
+}
+
+
+
+
 
 /* CTA & ドクターコメント */
 .cta-doctor-wrap {
@@ -388,7 +412,6 @@ nav ul li a {
   margin: 0;
 }
 
-
 /* サブナビゲーション */
 .sub-nav-section {
   border-bottom: 1px solid #CCCCCC;
@@ -446,6 +469,17 @@ nav ul li a {
   color: #1FAA85;
   /* ホバーやタップ、フォーカス時は#12C998 */
 }
+
+/* ボックスが改行時も矢印は固定 */
+.sub-nav-inner li {
+  flex-wrap: wrap; /* 子要素が折り返される */
+  align-items: flex-start; /* 矢印とボックスの揃え位置を上に調整 */
+}
+
+.sub-nav-inner li a {
+  margin-left: auto; /* 矢印の後にボックスを移動 */
+}
+
 
 
 
@@ -1014,30 +1048,35 @@ footer {
   .dot-line {
     display: none !important;
   }
+/* ▼ 親要素：50vw×50vwの円形枠 ------------------------------------ */
+.hero-image {
+  position: static !important;
+  margin-left: auto;
+  margin-right: 16px;
+  text-align: right;
 
-  .hero-image {
-    position: static !important;
-    margin: 0px 20px 0px;
-    /* 文章から30px下, 右端揃え(=auto), 左に20px余白 */
-    text-align: right;
-    /* 画像を右端に揃える */
-  }
-
-  .hero-image img {
-    width: 55vw;
-    /* 画面幅の55%を基準にサイズを調整 */
-    height: 55vw;
-    /* 高さも同じにして円形を維持 */
-    max-width: 300px;
+  width: min(50vw, 454px);
+  height: min(50vw, 454px);
+      /* 高さも同じにして円形を維持 */
+    /*max-width: 300px;
     /* 画像の最大幅を300pxに制限 */
-    max-height: 300px;
-    /* 画像の最大高さを300pxに制限 */
-    border-radius: 50%;
-    /* 円形にする */
-    object-fit: cover;
-    /* アスペクト比を崩さず領域内に収める */
-    margin-bottom: 0px;
-  }
+    /*max-height: 300px;*/
+  border-radius: 55%;
+  overflow: hidden; 
+  box-sizing: border-box;
+}
+
+/* ▼ スライダーが生成するラッパ要素を枠いっぱいに広げる ---------- */
+.hero-image .bx-wrapper,
+.hero-image .bx-viewport {
+  width: 100% !important;
+  height: 100% !important; 
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  object-fit: cover;
+  border-radius: 50%;
+}
 
   .doctor-comment-bubble {
     position: static;
@@ -1128,9 +1167,9 @@ footer {
   bottom: 20px;
   right: 20px;
   z-index: 99;
-  width: 35px;
+  width: 40px;
   /* 画像サイズに合わせる */
-  height: 35px;
+  height: 40px;
   cursor: pointer;
   background: none;
   /* 黒丸を削除 */
