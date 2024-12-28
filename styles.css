@@ -300,13 +300,10 @@ nav ul li a {
 /* ヒーロー画像：右から154px */
 .hero-image {
   position: absolute;
-  right: 154px;
+  right: 150px;
   top: -40px;
-
   width: 454px;
   height: 454px;
-  overflow: hidden; /* 枠からはみ出さない */
-  border-radius: 50%;
 }
 
 .hero-image img {
@@ -324,16 +321,6 @@ nav ul li a {
   border: none;
   overflow: hidden;
 }
-
-.hero-image .bxslider li {
-  width: 454px ; /* 各スライド(LI)も454px幅 */
-  height: 454px ; 
-  overflow: hidden;
-}
-
-
-
-
 
 /* CTA & ドクターコメント */
 .cta-doctor-wrap {
@@ -377,10 +364,8 @@ nav ul li a {
   padding: 20px;
   width: 354px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  position: relative;
-  /* 絶対配置基準 */
-  top: -50px;
-  /* 点線との位置関係 */
+  position: relative;/* 絶対配置基準 */
+  top: -50px;/* 点線との位置関係 */
 }
 
 .doctor-inner {
@@ -399,7 +384,6 @@ nav ul li a {
 .doctor-comment {
   margin-left: 70px;
   font-size: 14px;
-
 }
 
 .doctor-comment p {
@@ -414,47 +398,32 @@ nav ul li a {
 
 /* サブナビゲーション */
 .sub-nav-section {
-  border-bottom: 1px solid #CCCCCC;
-  /* 最終的にはここ消す（ボーダーの色） */
+  border-bottom: 1px solid #CCCCCC;/* 最終的にはここ消す（ボーダーの色） */
   padding: 20px 0;
 }
-
 .sub-nav-inner {
   margin-left: 125px;
 }
-
 .sub-nav-inner ul {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap;             /* 要素が横幅を超えれば改行 */
+  justify-content: flex-start; /* or flex-end, お好みで右寄せも可能 */
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
-
 .sub-nav-inner li {
-  position: relative;
+  display: inline-flex;  /* 矢印＆リンクを1行に収めたい場合はinline-flexが便利 */
+  align-items: center;   /* 縦方向の中央揃え */
   margin-bottom: 13px;
-  /* ボックス間のスペースを13pxに設定 */
+  margin-right: 10px;    /* ボックス間隔 (適宜調整) */
 }
 
-/* 最後のアイテムはマージンを除外 */
-.sub-nav-inner li:last-child {
-  margin-bottom: 0;
-}
-
-.sub-nav-inner li:not(:first-child):before {
-  content: "";
-  display: inline-block;
-  vertical-align: middle;
-  background: url("images/Arrow.png") no-repeat center center;
-  width: 20px;
-  height: 20px;
-  margin: 0 6px;
-}
-
+/* リンクボックスの装飾は従来通り */
 .sub-nav-inner li a {
   text-decoration: none;
   font-size: 14px;
   color: #292F2C;
-  /* 通常時の文字色 */
   display: inline-block;
   padding: 10px 24px;
   border: 1px solid #C8C6BE;
@@ -462,6 +431,15 @@ nav ul li a {
   background: #FFFefa;
   transition: background 0.3s, color 0.3s;
 }
+.arrow {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-left: 6px;  /* リンクボックスの右隣に矢印を少し離して配置 */
+  background: url("images/Arrow.png") no-repeat center center;
+  background-size: contain; /* 必要に応じてアイコンを縮小表示 */
+}
+
 
 .sub-nav-inner li a:hover,
 .sub-nav-inner li a:focus,
@@ -469,20 +447,6 @@ nav ul li a {
   color: #1FAA85;
   /* ホバーやタップ、フォーカス時は#12C998 */
 }
-
-/* ボックスが改行時も矢印は固定 */
-.sub-nav-inner li {
-  flex-wrap: wrap; /* 子要素が折り返される */
-  align-items: flex-start; /* 矢印とボックスの揃え位置を上に調整 */
-}
-
-.sub-nav-inner li a {
-  margin-left: auto; /* 矢印の後にボックスを移動 */
-}
-
-
-
-
 /* 各セクション共通 */
 .services,
 .nanchisei-section,
@@ -542,48 +506,38 @@ nav ul li a {
 
 /* 診療情報ボックス */
 .info-box {
-  display: inline-flex;
-  /* インライン要素として並び、内容に応じて幅が決まる */
+  display: inline-flex;/* インライン要素として並び、内容に応じて幅が決まる */
   border-radius: 10px;
   border: 1px solid #CCCCCC;
   overflow: hidden;
   font-family: 'Yantramanav', sans-serif;
 }
-
 .info-row {
   display: inline-flex;
   /* width:100%; ←削除 */
 }
-
 .info-block {
-  padding: 15px 25px;
-  /* 上下15px, 左右25pxの余白 */
+  padding: 15px 25px;/* 上下15px, 左右25pxの余白 */
   font-size: 19px;
-  color: #333333;
-  /* white-space: nowrap; ← 削除でテキスト量に応じて高さ調整可能 */
+  color: #333333;/* white-space: nowrap; ← 削除でテキスト量に応じて高さ調整可能 */
 }
-
 /* 隣接するブロック間に縦罫線を追加 */
 .info-block+.info-block {
   border-left: 1px solid #CCCCCC;
 }
-
 .time-highlight {
-  color: #1FAA85;
-  /* 強調色 */
+  color: #1FAA85; /* 強調色 */
   font-weight: bold;
 }
-
 .bg-cream {
   background-color: #FFFEFB;
 }
-
 .bg-white {
   background-color: #FFFFFF;
 }
 
 
-/* その他セクションの本文 */
+/* 各セクションの本文 */
 .nanchisei-section p,
 .center-features p,
 .cases-section p,
@@ -600,9 +554,6 @@ footer {
   border-top: 1px solid #CCCCCC;
   padding: 40px 0;
 }
-
-
-
 .clinic-hours h2 {
   font-size: 33px;
   color: #292F2C;
@@ -615,26 +566,24 @@ footer {
   padding: 0;
   margin: 0;
 }
-
 .clinic-hours li {
   font-size: 14px;
   color: #292F2C;
   line-height: 1.6;
   margin-bottom: 10px;
 }
-
 .clinic-hours strong {
   font-weight: bold;
 }
 
+/* 特定幅での調整 */
 @media screen and (max-width: 1350px) and (min-width: 1160px) {
   .top-info-inner {
     height: 177px;
     background:
       url("images/background-round1.png") no-repeat 643px 77px,
       /* 最前面に画像 */
-      linear-gradient(to bottom, #FBF9F3 0px, #FFFFFF 177px);
-    /* 背面にグラデーション */
+      linear-gradient(to bottom, #FBF9F3 0px, #FFFFFF 177px);/* 背面にグラデーション */
     background-size: 72px 74px, auto;
   }
 
@@ -646,53 +595,41 @@ footer {
   /* ロゴとナビゲーションの間隔を詰める */
   nav {
     left: 200px;
-    /* 279px → 240px */
   }
-
   /* メニュー項目同士の間隔を詰める */
   nav ul li+li {
     margin-left: 20px;
     /* 34px → 24px */
   }
-
   /* 文字間を少し詰める(例) */
   .meniu-button {
     letter-spacing: -0.5px;
   }
 }
 
-
 /* レスポンシブ モバイル */
 @media screen and (max-width: 1160px) {
-
   /* 全体幅を100%に */
   .container {
     width: 100%;
     padding: 0;
     margin: 0;
   }
-
   body {
     background: none;
   }
-
   /* ヘッダー */
   header,
   .top-info,
   .main-pc {
     display: none;
   }
-
   .main-mobile {
     display: block;
     background:
-      url("images/background-round2.png") no-repeat left 90px top 350px,
-      /* 左上に1つ目 */
-      url("images/background-round2.png") no-repeat right 90px bottom 0px;
-    /* 右下に2つ目 */
-    background-size: 75px 75px, 50px 50px;
-    /* 両方の背景サイズを指定 */
-
+      url("images/background-round2.png") no-repeat left 90px top 350px,/* 左上に1つ目 */
+      url("images/background-round2.png") no-repeat right 90px bottom 0px;/* 右下に2つ目 */
+    background-size: 75px 75px, 50px 50px;/* 両方の背景サイズを指定 */
   }
 
   /* ---------- モバイル専用ヘッダー ---------- */
@@ -700,49 +637,36 @@ footer {
     display: block;
     position: relative;
     width: 100%;
-    height: 140px;
-    /* 背景: linear-gradient  + 高さ分 #FBF9F3 → #FFFFFF */
+    height: 140px;/* 背景: linear-gradient  + 高さ分 #FBF9F3 → #FFFFFF */
     background:
-      url("images/background-round2.png") no-repeat left 274px top 80px,
-      /* 左上に配置 */
-      linear-gradient(to bottom, #FBF9F3 0px, #FFFFFF 140px);
-    /* デフォルトのグラデーション */
-    background-size: 50px 50px, auto;
-    /* 背景画像のサイズを設定 */
+      url("images/background-round2.png") no-repeat left 274px top 80px,/* 左上に配置 */
+      linear-gradient(to bottom, #FBF9F3 0px, #FFFFFF 140px);/* デフォルトのグラデーション */
+    background-size: 50px 50px, auto;/* 背景画像のサイズを設定 */
   }
 
   .header-inner {
-    position: static;
-    /* 絶対配置解除 */
+    position: static;/* 絶対配置解除 */
     height: auto;
     padding: 10px 0;
     text-align: center;
-    /* 中央寄せ */
   }
-
   .mobile-logo {
     position: absolute;
     left: 29px;
     top: 20px;
-    /* お好みで微調整 */
     width: 41px;
     height: 57px;
   }
-
   /* Yaologo.png はロゴの下に */
   .yao-logo {
     position: absolute;
     left: 29px;
-    top: 85px;
-    /* ロゴの高さ+少し余白 */
+    top: 85px;/* ロゴの高さ+少し余白 */
     width: 150px;
-    /* 適当なサイズ例 */
     height: auto;
   }
-
   nav {
-    position: static;
-    /* 絶対配置解除 */
+    position: static;    /* 絶対配置解除 */
     transform: none;
     margin: 10px 0;
   }
@@ -751,8 +675,6 @@ footer {
   .mobile-lang {
     position: absolute;
     top: 30px;
-    /* ロゴと同じ高さか少し上下に調整 */
-    /* 右端16pxのハンバーガー幅(30px)と間の24pxを考慮 → 16 + 15 + 24 = 70 */
     right: 55px;
     display: flex;
     align-items: center;
@@ -763,71 +685,8 @@ footer {
     color: #36383B;
     font-size: 14px;
     font-weight: 500;
-    margin-left: 24px;
-    /* 日本語とENの間を24px */
-    /* 最初のリンクには余白不要にするなら:first-child対応など */
+    margin-left: 24px;  /* 日本語とENの間を24px */
   }
-
-
-  /* ハンバーガーボタン全体 */
-  .menu-trigger {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    z-index: 9999;
-    /* 位置調整(例: 元々 .mobile-menu-icon がもっていた top, right などを移植) */
-    top: 25px;
-    right: 16px;
-  }
-
-  /* バー3本の共通スタイル */
-  .menu-trigger,
-  .menu-trigger span {
-    display: inline-block;
-    transition: all 0.4s;
-    box-sizing: border-box;
-  }
-
-  .menu-trigger span {
-    /* バーの色や形状 */
-    background-color: #000;
-    border-radius: 4px;
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 4px;
-  }
-
-  /* 1本目、2本目、3本目のバーを縦に並べる */
-  .menu-trigger span:nth-of-type(1) {
-    top: 0;
-  }
-
-  .menu-trigger span:nth-of-type(2) {
-    top: 12px;
-  }
-
-  .menu-trigger span:nth-of-type(3) {
-    bottom: 0;
-  }
-
-  /* active状態で1本目を45度ほど回転＆真ん中へ移動して斜め線化 */
-  .menu-trigger.active span:nth-of-type(1) {
-    transform: translateY(12px) rotate(-315deg);
-  }
-
-  /* 2本目を消す */
-  .menu-trigger.active span:nth-of-type(2) {
-    opacity: 0;
-  }
-
-  /* 3本目を45度ほど回転＆真ん中へ移動してもう一本の斜め線に */
-  .menu-trigger.active span:nth-of-type(3) {
-    transform: translateY(-12px) rotate(315deg);
-  }
-
-
   /* ---------- モバイルメニュー(navigation) ---------- */
   /* ハンバーガーボタン全体 */
   .menu-trigger {
@@ -909,25 +768,19 @@ footer {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
     padding: 20px 0;
-    opacity: 0;
-    /* 初期状態は非表示 */
-    transition: opacity 0.3s ease-in-out;
-    /* フェードアニメーション */
+    opacity: 0;/* 初期状態は非表示 */
+    transition: opacity 0.3s ease-in-out;/* フェードアニメーション */
   }
-
   .mobile-nav.fade-in {
     opacity: 1;
   }
-
   .mobile-nav.fade-out {
     opacity: 0;
   }
-
   .mobile-nav.open {
     display: block;
     transform: translateY(0);
   }
-
   .mobile-nav ul {
     list-style: none;
     margin: 0 auto;
@@ -936,19 +789,15 @@ footer {
     flex-direction: column;
     max-width: 300px;
   }
-
-
   .mobile-nav li {
     width: 100%;
     border-top: 1px solid #CCC;
     margin: 0;
   }
-
   .mobile-nav li:first-child {
     border-top: none;
     /* 最初だけ線なし */
   }
-
   .mobile-nav li a {
     display: block;
     text-decoration: none;
@@ -957,7 +806,6 @@ footer {
     font-weight: 700;
     padding: 15px 0;
   }
-
   /* 閉じるボタンのスタイル */
   .close-menu {
     background-color: #1FAA85;
@@ -973,27 +821,20 @@ footer {
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
   }
-
   /* 閉じるボタンにカーソルが合された時 */
   .close-menu:hover {
-    background-color: #1F4F61;
-    /* ホバー時の背景色 */
+    background-color: #1F4F61;  /* ホバー時の背景色 */
   }
-
-
   /* ▼ ヒーローセクション全体を通常フローに */
   .hero-section {
-    position: static !important;
-    /* 絶対配置を打ち消し */
+    position: static !important;/* 絶対配置を打ち消し */
     margin-top: 0px;
     width: 100%;
     margin-right: auto;
     margin-left: auto;
-    padding: 0 10px;
-    /* 左右10px余白  */
+    padding: 0 10px;  /* 左右10px余白  */
     box-sizing: border-box;
   }
-
   /* ▼ hero-textを通常フローで並べ、文章左揃え */
   .hero-text {
     position: static !important;
@@ -1003,7 +844,6 @@ footer {
     /* 幅を固定しない → 可変 */
     max-width: none;
   }
-
   /* 文章末端から30px下にボタンを置く => margin-bottom:30pxしてボタンが自然に下がる */
   .hero-desc {
     width: auto !important;
@@ -1027,8 +867,7 @@ footer {
 
   .cta-all-inline {
     width: auto;
-    margin: 0 20px;
-    /* 左右20px余白(文章に合わせる) */
+    margin: 0 20px;  /* 左右20px余白(文章に合わせる) */
     text-align: left;
     font-size: 0;
   }
@@ -1038,12 +877,10 @@ footer {
     margin-bottom: 10px;
     font-size: 14px;
   }
-
   /* CONTACT US ボタンの左端を文章と同じに */
   .cta-button {
     margin-left: 0;
   }
-
   /* ▼ dot-line を非表示 */
   .dot-line {
     display: none !important;
@@ -1054,14 +891,13 @@ footer {
   margin-left: auto;
   margin-right: 16px;
   text-align: right;
-
   width: min(50vw, 454px);
   height: min(50vw, 454px);
       /* 高さも同じにして円形を維持 */
     /*max-width: 300px;
     /* 画像の最大幅を300pxに制限 */
     /*max-height: 300px;*/
-  border-radius: 55%;
+  border-radius: 50%;
   overflow: hidden; 
   box-sizing: border-box;
 }
@@ -1113,10 +949,8 @@ footer {
   .cases-inner,
   .study-inner,
   .results-inner {
-    margin-left: 10px;
-    /* 左端から10px */
-    margin-right: 10px;
-    /* デザインのバランスを保つ */
+    margin-left: 10px;   /* 左端から10px */
+    margin-right: 10px;  /* デザインのバランスを保つ */
   }
 
   /* サービスカード */
@@ -1161,7 +995,7 @@ footer {
     padding: 20px 0;
   }
 }
-
+/* スクロールボタン */
 #backtotop {
   position: fixed;
   bottom: 20px;
