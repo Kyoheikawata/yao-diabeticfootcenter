@@ -18,20 +18,20 @@
   <script src="https://cdn.jsdelivr.net/npm/bxslider@4/dist/jquery.bxslider.min.js"></script>
 
   <script>
-$(document).ready(function () {
-  $('.bxslider').bxSlider({
-    mode: 'horizontal',     // スライドの切り替え方 (horizontal / fade / verticalなど)
-    auto: true,             // 自動再生する場合
-    speed: 800,             // スライド切り替えスピード
-    pause: 4000,            // スライドの表示時間
-    captions: false,        // 画像キャプションを表示する場合はtrue
-    pager: false,           // ページャーを非表示
-    adaptiveHeight: true,    // スライダーの高さを内容に合わせて調整
-    prevText: '',  // 「Prev」表記を消す
-    nextText: ''   // 「Next」表記を消す
-    
-  });
-});
+    $(document).ready(function () {
+      $('.bxslider').bxSlider({
+        mode: 'horizontal',     // スライドの切り替え方 (horizontal / fade / verticalなど)
+        auto: true,             // 自動再生する場合
+        speed: 800,             // スライド切り替えスピード
+        pause: 4000,            // スライドの表示時間
+        captions: false,        // 画像キャプションを表示する場合はtrue
+        controls: false, 
+        pager: false,           // ページャーを非表示
+        adaptiveHeight: true,    // スライダーの高さを内容に合わせて調整
+        prevText: '',  // 「Prev」表記を消す
+        nextText: ''   // 「Next」表記を消す
+      });
+    });
   </script>
 
 
@@ -218,16 +218,40 @@ $(document).ready(function () {
     <section id="subMenuSection" class="sub-nav-section">
       <div class="sub-nav-inner inner">
         <ul>
-          <li><a href="#services" class="body-text-bold">主な業務内容</a></li>
-          <li><a href="#reservation" class="body-text-bold">診療時間・診療場所（完全予約制）</a></li>
-          <li><a href="#nanchisei" class="body-text-bold">難治性潰瘍とは</a></li>
-          <li><a href="#features" class="body-text-bold">当センターの特徴</a></li>
-          <li><a href="#cases" class="body-text-bold">実際の様子</a></li>
-          <li><a href="#gishi" class="body-text-bold">義肢・装具</a></li>
-          <li><a href="#results" class="body-text-bold">実績</a></li>
+          <!-- 1番目(先頭)は矢印なしの場合 -->
+          <li>
+            <a href="#services" class="body-text-bold">主な業務内容</a>
+            <span class="arrow"></span>
+          </li>
+
+          <!-- 2番目以降は「リンク + 矢印」 -->
+          <li>
+            <a href="#reservation" class="body-text-bold">診療時間・診療場所（完全予約制）</a>
+            <span class="arrow"></span>
+          </li>
+          <li>
+            <a href="#nanchisei" class="body-text-bold">難治性潰瘍とは</a>
+            <span class="arrow"></span>
+          </li>
+          <li>
+            <a href="#features" class="body-text-bold">当センターの特徴</a>
+            <span class="arrow"></span>
+          </li>
+          <li>
+            <a href="#cases" class="body-text-bold">実際の様子</a>
+            <span class="arrow"></span>
+          </li>
+          <li>
+            <a href="#gishi" class="body-text-bold">義肢・装具</a>
+            <span class="arrow"></span>
+          </li>
+          <li>
+            <a href="#results" class="body-text-bold">実績</a>
+          </li>
         </ul>
       </div>
     </section>
+
 
 
     <!-- 主な業務内容セクション -->
