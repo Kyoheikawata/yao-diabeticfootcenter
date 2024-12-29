@@ -19,8 +19,8 @@ body {
     url("images/background-round2.png") no-repeat;
 
   /* ポジションとサイズは順番通りに指定: 最初のが画像、2番目がグラデーション */
-  background-position: 600px 310px, top left;
-  background-size: 46px 47px, auto;
+  background-position: 580px 270px, top left;
+  background-size: 60px 60px, auto;
 
   color: #292F2C;
   margin: 0;
@@ -62,6 +62,8 @@ body {
   font-weight: 400;
   line-height: 1.6;
   color: #292F2C;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .body-text-bold {
@@ -103,7 +105,7 @@ header {
   height: 100%;
 }
 
-/* ロゴ配置：左端から108px、サイズ71×71 */
+/* ロゴ配置：左端から123px、サイズ71×71 */
 .logo {
   position: absolute;
   left: 123px;
@@ -257,18 +259,27 @@ nav ul li a {
 
 .header-links a {
   margin-left: 10px;
-  font-size: 14px;
-  color: #36383B;
+  font-size: 16px;
+  color: #29302C;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   vertical-align: middle;
+  letter-spacing: 0.02em;
 }
-
+.link-iconsitemap{
+  width: 22px;
+  height: 22px;
+  margin-right: 5px;
+  margin-top: 0px;
+  margin-bottom: 8px;
+}
 .link-icon {
   width: 14px;
   height: 18px;
   margin-right: 5px;
+  margin-bottom: 8px;
+
 }
 
 .header-links img {
@@ -324,8 +335,9 @@ nav ul li a {
 
 /* CTA & ドクターコメント */
 .cta-doctor-wrap {
-  padding: 40px 0 20px 0;
   margin-top: 180px;
+  margin-bottom: 0;       /* 追加: 下余白を0に */
+  padding: 40px 0 0 0;  /* 下パディングを0に */
 }
 
 .cta-all-inline {
@@ -349,6 +361,15 @@ nav ul li a {
   line-height: 48px;
   text-align: center;
 }
+.cta-button:hover,
+.cta-button:focus,
+.cta-button:active {
+  background-color: #1FAA85; /* 変えない */
+  color: #FFFFFF;           /* 変えない */
+  cursor: pointer;          /* 見た目はボタンに */
+  text-decoration: none;    /* 下線を消す */
+  
+}
 
 .dot-line {
   width: 340px;
@@ -358,14 +379,18 @@ nav ul li a {
 
 /* ドクターコメントボックス */
 .doctor-comment-bubble {
-  vertical-align: top;
+  position: absolute; 
+  top: 0; 
+  right: 0;    /* あるいはお好みの配置 */
+  /* ↑ これでフロー外に配置され、セクション高さを圧迫しなくなる */
+
   background: #FFFFFF;
   border-radius: 15px;
   padding: 20px;
   width: 354px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  position: relative;/* 絶対配置基準 */
   top: -50px;/* 点線との位置関係 */
+  right: 328px;
 }
 
 .doctor-inner {
@@ -395,7 +420,34 @@ nav ul li a {
   font-weight: bold;
   margin: 0;
 }
+/* 診療情報ブロック */
+.clinic-info-block {
+  margin-top: 60px;  /* CTAセクションの終わりから60px */
+  margin-bottom: 50px;
+}
+.clinic-info-inner {
+  margin-left: 125px;
+  font-family: 'Yantramanav', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+}
+.clinic-info-inner p {
+  margin: 0 0 8px 0;
+}
+.clinic-info-inner .time {
+  color: #1FAA85;
+}
+.clinic-info-inner a {
+  text-decoration: none;   /* 下線を消す */
+  color: #000000;          /* 通常時: 黒 */
+}
 
+/* ホバー時に #1FAA85 */
+.clinic-info-inner a:hover {
+  color: #1FAA85;
+}
 /* サブナビゲーション */
 .sub-nav-section {
   border-bottom: 1px solid #CCCCCC;/* 最終的にはここ消す（ボーダーの色） */
@@ -621,7 +673,8 @@ footer {
   /* ヘッダー */
   header,
   .top-info,
-  .main-pc {
+  .main-pc,
+  .clinic-info-block {
     display: none;
   }
   .main-mobile {
