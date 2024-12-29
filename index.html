@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- フォントの読み込み -->
   <link href="https://fonts.googleapis.com/css?family=Sarala:700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css?family=Yantramanav:400,500,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Yantramanav:400,450,500,700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css?family=Sansation&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css?family=Siemreap&display=swap" rel="stylesheet" />
   <!-- CSS読み込み -->
@@ -86,13 +86,16 @@
               <span class="body-text-bold phone-number">072-993-8501（代表）</span>
             </a>
           </div>
-          <p class="body-text-bold address">〒581-0011 大阪府八尾市若草町1番17号</p>
+          <p class="body-text address">〒581-0011 大阪府八尾市若草町1番17号</p>
         </div>
-        <div class="header-links body-text">
-          <a href="#">日本語</a> <a href="#">EN</a>
-          <a href="#"><img src="images/sitemap_icon.png" alt="サイトマップ" class="link-icon">サイトマップ</a>
+        <div class="header-links body-text"> 
+          <a href="#" style="margin-right: 10px;">日本語</a>
+          <a href="#" style="margin-right: 28px;">EN</a> <!-- ENと次の要素の間隔を指定 -->
+          <a href="#"><img src="images/sitemap_icon.png" alt="サイトマップ" class="link-iconsitemap">サイトマップ</a>
           <a href="#"><img src="images/mask-group-6@2x.png" alt="アイコン" class="link-icon">個人情報保護方針</a>
         </div>
+        
+        
       </div>
     </div>
 
@@ -180,6 +183,22 @@
           </div>
         </section>
     </main>
+            <!-- ▼ 追加: 診療時間などを表示するブロック -->
+            <div class="clinic-info-block">
+              <div class="clinic-info-inner">
+                <p>午前診　<span class="time">8:00〜12:00</span> ／ 診察 <span class="time">9:00〜</span></p>
+                <!-- ▼ 午後診の部分で「外来予定表参照」をリンクにする -->
+                <p>午後診　診療科により異なります（
+                  <a href="https://www.yao.tokushukai.or.jp/visit/schedule.php#ss36" target="_blank" rel="noopener noreferrer">
+                    外来予定表参照
+                  </a>
+                  ）
+                </p>
+                <p>夕診　<span class="time">16:30〜19:00</span> ／ 診察 <span class="time">17:00〜</span></p>
+              </div>
+            </div>                       
+          </main> 
+          <!-- ここでPC版メイン終了 -->
     <!-- ▼ モバイル版メイン（構造＃１） -->
     <main>
       <div class="main-mobile">
