@@ -19,20 +19,27 @@
 
   <script>
     $(document).ready(function () {
-      $('.bxslider').bxSlider({
-        mode: 'horizontal',     // スライドの切り替え方 (horizontal / fade / verticalなど)
-        auto: true,             // 自動再生する場合
-        speed: 800,             // スライド切り替えスピード
-        pause: 4000,            // スライドの表示時間
-        captions: false,        // 画像キャプションを表示する場合はtrue
-        controls: false, 
-        pager: false,           // ページャーを非表示
-        adaptiveHeight: true,    // スライダーの高さを内容に合わせて調整
-        prevText: '',  // 「Prev」表記を消す
-        nextText: ''   // 「Next」表記を消す
+      const slider = $('.bxslider').bxSlider({
+        mode: 'fade',     // スライドの切り替え方
+        auto: true,       // 自動再生を有効
+        speed: 1500,       // 切り替えスピード
+        pause: 4000,      // 表示時間
+        captions: false,  // キャプションを表示しない
+        controls: false,  // 次へ/前へボタンを非表示
+        pager: false,     // ページャーを非表示
+        adaptiveHeight: true,
+        touchEnabled: false, // タッチ操作を無効
+        keyboardEnabled: false, // キーボード操作を無効
+        preventDefaultSwipeX: true, // 水平方向のスワイプを無効
+        preventDefaultSwipeY: true  // 垂直方向のスワイプを無効
+      });
+  
+      // スライダーのクリックイベントを無効化
+      $('.bxslider').on('click', function (e) {
+        e.preventDefault();
       });
     });
-  </script>
+  </script>  
 
 
 </head>
@@ -137,7 +144,7 @@
             <div class="hero-text">
               <h1 class="h1">Diabetic Foot Center</h1>
               <p class="body-text hero-desc" style="width:414px;">
-                糖尿病による足の問題を抱えていませんか？ ...
+                糖尿病による足の問題を抱えていませんか？私たちの専門センターでは、糖尿病患者様に特化したフットケアと治療を提供しています。早期発見と適切なケアで、足の健康を守り、生活の質を向上させましょう。安心して足を任せられる専門チームが、あなたをサポートします。
               </p>
             </div>
 
@@ -145,9 +152,9 @@
 
             <div class="hero-image">
               <ul class="bxslider">
-                <li><img src="images/beachleg.jpg" alt="スライド画像1"></li>
-                <li><img src="images/dr-85.jpg" alt="スライド画像2"></li>
-                <li><img src="images/wound1.jpg" alt="スライド画像3"></li>
+                <li><img src="images/ayabe綾部 (1).jpg" alt="スライド画像1"></li>
+                <li><img src="images/ayabe綾部 (2).jpg" alt="スライド画像2"></li>
+                <li><img src="images/Diabetic foot center (1).jpg" alt="スライド画像3"></li>
               </ul>
             </div>
 
@@ -190,9 +197,9 @@
             </div>
             <div class="hero-image">
               <ul class="bxslider">
-                <li><img src="images/beachleg.jpg" alt="スライド画像1"></li>
-                <li><img src="images/dr-85.jpg" alt="スライド画像2"></li>
-                <li><img src="images/wound1.jpg" alt="スライド画像3"></li>
+                <li><img src="images/ayabe綾部 (1).jpg" alt="スライド画像1"></li>
+                <li><img src="images/ayabe綾部 (2).jpg" alt="スライド画像2"></li>
+                <li><img src="images/Diabetic foot center (1).jpg" alt="スライド画像3"></li>
               </ul>
             </div>
           </div>
@@ -320,7 +327,7 @@
     <section id="features" class="center-features">
       <div class="features-inner inner">
         <h2 class="h2">当センターの特徴</h2>
-        <p class="body-text">ここに当センター独自の特徴や強みを記載。</p>
+        <p class="body-text">ここに当センター特徴内容記載。</p>
       </div>
     </section>
 
@@ -328,7 +335,7 @@
     <section id="cases" class="cases-section">
       <div class="cases-inner inner">
         <h2 class="h2">実際の様子</h2>
-        <p class="body-text">ここに実績を示すための写真や説明を掲載。</p>
+        <p class="body-text">ここに実際の写真や説明を掲載。</p>
       </div>
     </section>
 
@@ -336,7 +343,7 @@
     <section id="gishi" class="study-section">
       <div class="study-inner inner">
         <h2 class="h2">義肢・装具</h2>
-        <p class="body-text">ここに義肢や装具に関する情報を記載。</p>
+        <p class="body-text">ここに義肢、装具に関する情報を記載。</p>
       </div>
     </section>
 
@@ -344,7 +351,7 @@
     <section id="results" class="results-section">
       <div class="results-inner inner">
         <h2 class="h2">実績</h2>
-        <p class="body-text">ここに治療件数や治癒率などのデータを掲載。</p>
+        <p class="body-text">ここに治療件数や治癒率などを含めた実績を掲載。</p>
       </div>
     </section>
     </main>
