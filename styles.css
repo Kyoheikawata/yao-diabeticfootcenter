@@ -588,9 +588,72 @@ nav ul li a {
   background-color: #FFFFFF;
 }
 
+/* ▼ 難治性潰瘍スライダーのコンテナ */
+.nanchisei-slider-container {
+  position: relative;
+  width: 1192px;
+  height: 384px;
+}
+
+/* bxSlider が自動生成する .bx-wrapper / .bx-viewport に枠・影を消す */
+.bx-wrapper,
+.bx-wrapper .bx-viewport {
+  border: none !important;
+  box-shadow: none !important;
+  background: none !important;
+}
+/* bxSlider の枠をスライダーサイズに合わせる */
+/* 画像を1192×384に */
+.bxslider-nanchisei,
+.bxslider-nanchisei .bx-viewport {
+  width: 1192px;
+  height: 384px;
+  border: none;
+}
+
+/* ▼ 矢印を画像の下25px・中央に配置し、間隔を52px */
+.arrow-container {
+  position: absolute;
+  top: calc(100% + 25px); /* スライダーの下に25px */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 52px; /* 矢印のあいだを52px空ける */
+}
+
+/* 矢印本体 */
+.nanchi-arrow-left,
+.nanchi-arrow-right {
+  width: 44px;
+  height: 44px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  cursor: pointer;
+}
+
+/* ▼ 通常時: 左/右矢印 */
+.nanchi-arrow-left {
+  background-image: url("images/arrowleft.png"); /* 通常(ホバー前)左矢印 */
+}
+.nanchi-arrow-right {
+  background-image: url("images/arrowright.png"); /* 通常(ホバー前)右矢印 */
+}
+
+/* ▼ ホバー時（マウスオーバー）とクリック時（:active）
+   → ホバー版画像に切り替え */
+.nanchi-arrow-left:hover,
+.nanchi-arrow-left:active {
+  background-image: url("images/arrowlefthover.png");
+}
+.nanchi-arrow-right:hover,
+.nanchi-arrow-right:active {
+  background-image: url("images/arrowrighthover.png");
+}
+
 
 /* 各セクションの本文 */
-.nanchisei-section p,
+
 .center-features p,
 .cases-section p,
 .study-section p,
