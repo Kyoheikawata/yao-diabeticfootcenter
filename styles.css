@@ -1091,7 +1091,7 @@ footer {
   .cases-inner,
   .study-inner,
   .results-inner {
-    margin-left: 15px;   /* 左端から10px */
+    margin-left: 20px;   /* 左端から10px */
     margin-right: 10px;  /* デザインのバランスを保つ */
   }
 
