@@ -97,7 +97,7 @@ header {
   width: 100%;
   margin: 0 auto;
   height: 87px;
-  border-bottom: 1px solid #CCCCCC;
+  border-bottom: 1px solid #C9C6BE;
   position: relative;
 }
 
@@ -450,7 +450,7 @@ nav ul li a {
 }
 /* サブナビゲーション */
 .sub-nav-section {
-  border-bottom: 1px solid #CCCCCC;/* 最終的にはここ消す（ボーダーの色） */
+  border-bottom: 1px solid #C9C6BE;/* 最終的にはここ消す（ボーダーの色） */
   padding: 20px 0;
 }
 .sub-nav-inner {
@@ -560,7 +560,7 @@ nav ul li a {
 .info-box {
   display: inline-flex;/* インライン要素として並び、内容に応じて幅が決まる */
   border-radius: 10px;
-  border: 1px solid #CCCCCC;
+  border: 1px solid #C9C6BE;
   overflow: hidden;
   font-family: 'Yantramanav', sans-serif;
 }
@@ -575,7 +575,7 @@ nav ul li a {
 }
 /* 隣接するブロック間に縦罫線を追加 */
 .info-block+.info-block {
-  border-left: 1px solid #CCCCCC;
+  border-left: 1px solid #C9C6BE;
 }
 .time-highlight {
   color: #1FAA85; /* 強調色 */
@@ -666,7 +666,7 @@ nav ul li a {
 
 /* フッター */
 footer {
-  border-top: 1px solid #CCCCCC;
+  border-top: 1px solid #C9C6BE;
   padding: 40px 0;
 }
 .clinic-hours h2 {
@@ -1073,7 +1073,7 @@ footer {
   .cases-inner,
   .study-inner,
   .results-inner {
-    margin-left: 10px;   /* 左端から10px */
+    margin-left: 15px;   /* 左端から10px */
     margin-right: 10px;  /* デザインのバランスを保つ */
   }
 
@@ -1090,28 +1090,52 @@ footer {
   }
 
   /* 診療情報ボックス */
-  .info-box {
-    display: block;
-    /* インラインブロックを解除して縦並び */
-    text-align: center;
+  .reservation-info .info-box {
+    
+    margin: 0 auto; /* 外枠を中央配置 */
+    display: inline-grid;       /* コンテンツにフィットするグリッド */
+    /* 左列の幅を固定128px、右列は自動 */
+    grid-template-columns: 128px auto;
+    grid-template-rows: 1fr 1fr;
+    gap: 1px;  /* 横・縦ともに1pxの隙間＝区切り線 */
+    background-color: #C9C6BE; /* ギャップ部分の色（区切り線） */
   }
 
-  .info-row {
-    display: block;
+  /* 各セルの基本設定 */
+  .reservation-info .info-box .info-block {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    border: none;  /* 既存の境界線を削除 */
   }
 
-  .info-block {
-    display: block;
-    border-left: none;
-    /* 横並び時の仕切り線を解除 */
-    border-top: 1px solid #CCCCCC;
-    margin: 0;
+  /* 左側セル（①・③）の設定：左側余白14px、右側に1pxの縦区切り線 */
+  .reservation-info .info-box .info-block:nth-child(odd) {
+    padding-left: 14px;
+    /* フォント設定：Yantramanav 18px Bold */
+    font-family: 'Yantramanav', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
   }
 
-  .info-block+.info-block {
-    /* 縦並びの仕切り線 */
-    border-left: none;
-    border-top: 1px solid #CCCCCC;
+  /* 右側セル（②毎週月曜日＋時間、④形成外科外来（当院1階））の設定 */
+  .reservation-info .info-box .info-block:nth-child(even) {
+    /* 文字の始まりを、区切り線から15pxの位置に */
+    padding-left: 15px;
+    /* 右端にも15pxの余白を確保 */
+    padding-right: 15px;
+    justify-content: flex-start;
+    font-family: 'Yantramanav', sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    text-align: left;
+  }
+
+  /* ②セル内の時間部分「13:00〜16:00」：16px Bold、色 #1FAA85 */
+  .reservation-info .info-box .info-block:nth-child(2) .time-highlight {
+    font-size: 16px;
+    font-weight: bold;
+    color: #1FAA85;
   }
 
   /* フッター調整 */
