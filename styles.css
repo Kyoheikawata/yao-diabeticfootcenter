@@ -725,6 +725,14 @@ footer {
 /* レスポンシブ モバイル */
 @media screen and (max-width: 1160px) {
   /* 全体幅を100%に */
+  .h2 {
+    font-size: 24px;
+  }
+
+  /* 予約情報内の「(完全予約制)」部分は 15px に */
+  .reservation-info .reservation-sub {
+    font-size: 15px;
+  }
   .container {
     width: 100%;
     padding: 0;
