@@ -566,20 +566,38 @@ nav ul li a {
 }
 .info-row {
   display: inline-flex;
-  /* width:100%; ←削除 */
 }
+/* 共通設定：固定高さ、水平パディング、Flexで垂直中央揃え */
 .info-block {
-  padding: 15px 25px;/* 上下15px, 左右25pxの余白 */
-  font-size: 19px;
-  color: #333333;/* white-space: nowrap; ← 削除でテキスト量に応じて高さ調整可能 */
+  height: 60px;           /* 固定高さ（例：60px ※必要に応じて調整してください） */
+  padding: 0 25px;        /* 上下は0、左右のみ25pxの余白 */
+  display: flex;
+  align-items: center;    /* 垂直中央揃え */
+  color: #333333;
 }
 /* 隣接するブロック間に縦罫線を追加 */
-.info-block+.info-block {
+.info-block + .info-block {
   border-left: 1px solid #C9C6BE;
 }
-.time-highlight {
-  color: #1FAA85; /* 強調色 */
+
+/* 背景がクリームのセル（①診療時間、③診療場所）：25px Bold */
+.info-block.bg-cream {
+  font-size: 25px;
   font-weight: bold;
+}
+
+/* 背景が白のセル（②毎週月曜日＋時間、④形成外科外来（当院1階））：19px Regular */
+.info-block.bg-white {
+  font-size: 19px;
+  font-weight: normal;
+}
+
+/* .time-highlight内の「13:00〜16:00」：19px Bold、色 #1FAA85 */
+.time-highlight {
+  font-size: 19px;
+  font-weight: bold;
+  color: #1FAA85;
+  margin-left: 9px;
 }
 .bg-cream {
   background-color: #FFFEFB;
@@ -1136,6 +1154,7 @@ footer {
     font-size: 16px;
     font-weight: bold;
     color: #1FAA85;
+    margin-left: 9px; 
   }
 
   /* フッター調整 */
